@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
     locales: ["es", "en", "fr"],
     defaultLocale: "es",
   }, */
+  experimental: {
+    optimizePackageImports: ["@chakra-ui/react"],
+  },
 };
 
 export default nextConfig;
