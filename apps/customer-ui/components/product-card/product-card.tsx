@@ -1,15 +1,9 @@
 import React from "react";
 import { Box, Button, Heading, Image, Stack, Text } from "@chakra-ui/react";
 import { FC } from "react";
-import { Product } from "@/api/ProductTypes";
+import { Product } from "@/api/product/product-types";
 
-const ProductsCard: FC<Product> = ({
-  id,
-  image,
-  title,
-  description,
-  price,
-}) => {
+const ProductCard: FC<Product> = ({ id, image, title, description, price }) => {
   return (
     <Box
       key={id}
@@ -36,4 +30,4 @@ const ProductsCard: FC<Product> = ({
   );
 };
 
-export default ProductsCard;
+export default ProductCard;

@@ -1,12 +1,12 @@
-import { Product } from "@/api/ProductTypes";
+import { Product } from "@/api/product/product-types";
 import React from "react";
 import { FC } from "react";
-import ProductsCard from "../ProductsCard/ProductsCard";
+import ProductsCard from "../product-card/product-card";
 import { SimpleGrid } from "@chakra-ui/react";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { getProducts } from "@/api/ProductQueries";
+import { getProducts } from "@/api/product/product-queries";
 
-const ProductsCardList: FC = () => {
+const ProductCardList: FC = () => {
   const { data } = useSuspenseQuery<Product[]>({
     queryKey: ["products"],
     queryFn: getProducts,
@@ -21,4 +21,4 @@ const ProductsCardList: FC = () => {
   );
 };
 
-export default ProductsCardList;
+export default ProductCardList;

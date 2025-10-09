@@ -1,4 +1,4 @@
-import { Provider } from "@/components/ui/provider";
+import { Provider } from "../components/external/provider";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased md:px-8`}
       >
         <Provider>{children}</Provider>
       </body>
