@@ -1,0 +1,30 @@
+{
+  "name": "@longevity-ecommerce/ui-components",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --dts",
+    "dev": "tsup src/index.ts --watch --dts"
+  },
+  "peerDependencies": {
+    "@chakra-ui/react": "^3.27.0",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0",
+    "next-themes": "^0.4.6",
+    "react-icons": "^5.5.0"
+  },
+  "dependencies": {
+    "clsx": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.5.0"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    /* === General === */
+    "target": "ES2017",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+
+    /* === Modules === */
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "noEmit": false,
+
+    /* === JSX === */
+    "jsx": "react-jsx",
+
+    /* === Paths (based on workspaces) === */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["apps/customer-ui/*"],
+      "@ui/*": ["packages/ui-components/src/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"],
+  "include": []
+}

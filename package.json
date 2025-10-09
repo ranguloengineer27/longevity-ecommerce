@@ -1,5 +1,5 @@
 {
-  "name": "ecommerce-monorepo",
+  "name": "longevity-ecommerce",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -12,6 +12,8 @@
   },
   "devDependencies": {
     "@turbo/gen": "^2.0.0",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
     "prettier": "^3.3.0",
     "turbo": "^2.0.0",
     "typescript": "^5.5.0"
@@ -20,5 +22,17 @@
   "engines": {
     "node": ">=20.0.0",
     "pnpm": ">=9.0.0"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^3.27.0",
+    "react": "^19.2.0",
+    "react-dom": "19.1.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "react": "19.1.0",
+      "react-dom": "19.1.0",
+      "@chakra-ui/react": "^3.27.0"
+    }
   }
 }
