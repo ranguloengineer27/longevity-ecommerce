@@ -1,13 +1,15 @@
+// @vendors
+import { useSuspenseInfiniteQuery } from "@tanstack/react-query";
+import React, { Suspense } from "react";
+import { ErrorBoundary } from "react-error-boundary";
+import { Box, Heading, Spinner } from "@chakra-ui/react";
+
 // @apis
 import { getProducts } from "@api/services/products";
 
 // @components
-import { Box, Heading, Spinner, Text } from "@chakra-ui/react";
 import ProductList from "../product-list";
-
-// @vendors
-import { useSuspenseInfiniteQuery } from "@tanstack/react-query";
-import React from "react";
+import ProductErrorAlert from "../product-error-alert/product-error-alert";
 
 const ProductListContainer = () => {
   const {
@@ -35,11 +37,7 @@ const ProductListContainer = () => {
   }
 
   if (isError) {
-    return (
-      <Box textAlign="center" p={10}>
-        <Text color="red.500">Error loading products.</Text>
-      </Box>
-    );
+    return <ProductErrorAlert />;
   }
 
   return (
@@ -48,25 +46,16 @@ const ProductListContainer = () => {
         Products
       </Heading>
 
-      {/* <Suspense fallback={<Spinner size="xl" />}>
-        <InfiniteScrollContainer
-          hasNextPage={hasNextPage}
-          fetchNextPage={fetchNextPage}
-          isFetchingNextPage={isFetchingNextPage}
-        >
-          <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4 }} gap={6}>
-            {products.map((product: Product) => (
-              <ProductsCard key={product.id} {...product} />
-            ))}
-          </SimpleGrid>
-        </InfiniteScrollContainer>
-      </Suspense> */}
-      <ProductList
-        products={products}
-        isFetchingNextPage={isFetchingNextPage}
-        hasNextPage={hasNextPage}
-        fetchNextPage={fetchNextPage}
-      />
+      <ErrorBoundary fallback={<ProductErrorAlert />}>
+        <Suspense fallback={<Spinner size="xl" />}>
+          <ProductList
+            products={products}
+            isFetchingNextPage={isFetchingNextPage}
+            hasNextPage={hasNextPage}
+            fetchNextPage={fetchNextPage}
+          />
+        </Suspense>
+      </ErrorBoundary>
     </Box>
   );
 };

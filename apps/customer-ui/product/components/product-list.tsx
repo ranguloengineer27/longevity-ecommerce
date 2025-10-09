@@ -21,19 +21,17 @@ const ProductList: FC<ProductListProps> = ({
   products,
 }) => {
   return (
-    <Suspense fallback={<Spinner size="xl" />}>
-      <InfiniteScrollContainer
-        hasNextPage={hasNextPage}
-        fetchNextPage={fetchNextPage}
-        isFetchingNextPage={isFetchingNextPage}
-      >
-        <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4 }} gap={6}>
-          {products.map((product: Product) => (
-            <ProductsCard key={product.id} {...product} />
-          ))}
-        </SimpleGrid>
-      </InfiniteScrollContainer>
-    </Suspense>
+    <InfiniteScrollContainer
+      hasNextPage={hasNextPage}
+      fetchNextPage={fetchNextPage}
+      isFetchingNextPage={isFetchingNextPage}
+    >
+      <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4 }} gap={6}>
+        {products.map((product: Product) => (
+          <ProductsCard key={product.id} {...product} />
+        ))}
+      </SimpleGrid>
+    </InfiniteScrollContainer>
   );
 };
 
