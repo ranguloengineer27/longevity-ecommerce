@@ -4,12 +4,12 @@ import { Product } from "@/api/product/product-types";
 
 // @components
 import { Box, Heading, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
+import InfiniteScrollContainer from "@ui/components/infinite-scroll-container";
+import ProductsCard from "@ui/components/product-card";
 
 // @vendors
 import { useInfiniteQuery } from "@tanstack/react-query";
 import React from "react";
-import ProductsCard from "./product-card/product-card";
-import InfiniteScrollContainer from "./infinite-scroll-trigger/infinite-scroll-container";
 
 const ProductsPage = () => {
   const {

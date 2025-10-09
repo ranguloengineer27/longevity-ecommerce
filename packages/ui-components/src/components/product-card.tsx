@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Button, Heading, Image, Stack, Text } from "@chakra-ui/react";
 import { FC } from "react";
-import { Product } from "@/api/product/product-types";
+import { Product } from "@longevity/api";
 
 const ProductCard: FC<Product> = ({ id, image, title, description, price }) => {
   return (
