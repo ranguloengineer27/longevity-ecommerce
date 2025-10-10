@@ -1,5 +1,5 @@
 import { Box, Spinner, Text } from "@chakra-ui/react";
-import React, { FC, JSX, useEffect } from "react";
+import React, { FC, forwardRef, JSX, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
 type NextPageCheck = { hasNextPage: boolean; isFetchingNextPage: boolean };
@@ -18,13 +18,20 @@ const InfiniteScrollStatus: FC<NextPageCheck> = ({
   return <Text color="gray.400">No more products</Text>;
 };
 
-const InfiniteScrollContainer: FC<InfiniteScrollTriggerProps> = ({
-  hasNextPage,
-  isFetchingNextPage,
-  fetchNextPage,
-  children,
-}) => {
-  const { ref, inView } = useInView();
+const InfiniteScrollContainer = forwardRef<
+  HTMLElement,
+  InfiniteScrollTriggerProps
+>(({ hasNextPage, isFetchingNextPage, fetchNextPage, children }, ref) => {
+  const { ref: inViewRef, inView } = useInView();
+  const setRefs = (node: HTMLDivElement) => {
+    inViewRef(node);
+
+    // @ts-ignore
+    if (ref) {
+      // @ts-ignore
+      ref.current = node;
+    }
+  };
 
   useEffect(() => {
     if (inView && hasNextPage && !isFetchingNextPage) {
@@ -35,7 +42,7 @@ const InfiniteScrollContainer: FC<InfiniteScrollTriggerProps> = ({
   return (
     <>
       {children}
-      <Box ref={ref} textAlign="center" mt={10}>
+      <Box ref={setRefs} textAlign="center" mt={10}>
         <InfiniteScrollStatus
           hasNextPage={hasNextPage}
           isFetchingNextPage={isFetchingNextPage}
@@ -43,6 +50,6 @@ const InfiniteScrollContainer: FC<InfiniteScrollTriggerProps> = ({
       </Box>
     </>
   );
-};
+});
 
 export default InfiniteScrollContainer;
