@@ -6,12 +6,12 @@ An (WIP) ecommerce for selling healthcare and longevity products
 
 It's a monorepo with the following structure:
 
-apps/
-└── customer-ui/ # Next.js app for customers (frontend)
+- apps/
+  - customer-ui/ # Next.js app for customers (frontend)
 
-packages/
-├── api/ # Shared types and backend communication layer
-└── ui-components/ # Shared Chakra UI + Tailwind component library
+- packages/
+  - api/ # Shared types and backend communication layer
+  - ui-components/ # Shared Chakra UI + Tailwind component library
 
 ### Tech stack
 
