@@ -10,6 +10,7 @@
   "dependencies": {
     "@chakra-ui/react": "^3.27.0",
     "@longevity/api": "workspace:*",
+    "@supabase/supabase-js": "^2.75.0",
     "@tanstack/react-query": "^5.90.2",
     "@tanstack/react-virtual": "^3.13.12",
     "next": "15.5.4",

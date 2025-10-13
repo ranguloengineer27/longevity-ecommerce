@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
+    "build:api": "turbo run build --filter=@longevity/api",
     "build:services": "turbo run build --filter=@longevity/services",
     "test": "turbo run test",
     "lint": "turbo run lint",

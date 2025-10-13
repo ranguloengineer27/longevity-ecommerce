@@ -3,6 +3,7 @@ import { useSuspenseInfiniteQuery } from "@tanstack/react-query";
 import React, { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { Box, Heading, Spinner } from "@chakra-ui/react";
+import supabaseClient from "../../../customer-ui.config"
 
 // @apis
 import { getProducts } from "@api/services/products";
@@ -21,7 +22,7 @@ const ProductListContainer = () => {
     isFetchingNextPage,
   } = useSuspenseInfiniteQuery({
     queryKey: ["products"],
-    queryFn: ({ pageParam = 1 }) => getProducts(pageParam),
+    queryFn: ({ pageParam = 1 }) => getProducts(supabaseClient, pageParam),
     getNextPageParam: (lastPage) => lastPage.nextPage ?? undefined,
     initialPageParam: 1,
   });
