@@ -1,0 +1,1 @@
+export const MIN_PRODUCTS_SROLL = 12;

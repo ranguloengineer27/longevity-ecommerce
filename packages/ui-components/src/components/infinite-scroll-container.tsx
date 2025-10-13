@@ -7,6 +7,7 @@ type NextPageCheck = { hasNextPage: boolean; isFetchingNextPage: boolean };
 export type InfiniteScrollTriggerProps = NextPageCheck & {
   fetchNextPage: () => void;
   children: JSX.Element;
+  showScrollStatus: boolean;
 };
 
 const InfiniteScrollStatus: FC<NextPageCheck> = ({
@@ -21,7 +22,7 @@ const InfiniteScrollStatus: FC<NextPageCheck> = ({
 const InfiniteScrollContainer = forwardRef<
   HTMLElement,
   InfiniteScrollTriggerProps
->(({ hasNextPage, isFetchingNextPage, fetchNextPage, children }, ref) => {
+>(({ hasNextPage, isFetchingNextPage, fetchNextPage, showScrollStatus, children }, ref) => {
   const { ref: inViewRef, inView } = useInView();
   const setRefs = (node: HTMLDivElement) => {
     inViewRef(node);
@@ -43,10 +44,10 @@ const InfiniteScrollContainer = forwardRef<
     <>
       {children}
       <Box ref={setRefs} textAlign="center" mt={10}>
-        <InfiniteScrollStatus
+        {showScrollStatus && <InfiniteScrollStatus
           hasNextPage={hasNextPage}
           isFetchingNextPage={isFetchingNextPage}
-        />
+        />}
       </Box>
     </>
   );

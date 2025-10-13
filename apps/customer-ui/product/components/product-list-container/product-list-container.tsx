@@ -9,8 +9,9 @@ import supabaseClient from "../../../customer-ui.config"
 import { getProducts } from "@api/services/products";
 
 // @components
-import ProductList from "../product-list";
+import ProductList from "../product-list/product-list";
 import ProductErrorAlert from "../product-error-alert/product-error-alert";
+import { Product } from "@api/types/product";
 
 const ProductListContainer = () => {
   const {
@@ -27,7 +28,7 @@ const ProductListContainer = () => {
     initialPageParam: 1,
   });
 
-  const products = data?.pages.flatMap((page) => page.data) ?? [];
+  const products:Product[] = data?.pages.flatMap((page) => page.data) ?? [];
 
   if (isLoading) {
     return (
